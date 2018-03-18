@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/myorders"
+            android:icon="@drawable/ic_myorders"
+            android:title="myorders" />
+        <item
+            android:id="@+id/status"
+            android:icon="@drawable/ic_status"
+            android:title="status" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+
+</menu>

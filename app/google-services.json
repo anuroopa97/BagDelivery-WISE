@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "361658390254",
+    "firebase_url": "https://bagdelivery-38cd3.firebaseio.com",
+    "project_id": "bagdelivery-38cd3",
+    "storage_bucket": "bagdelivery-38cd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361658390254:android:f251eda14c0a5650",
+        "android_client_info": {
+          "package_name": "com.example.nsrav.bagdelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361658390254-mdv5eapu5thm78l0fgt2lgn9ispqmevp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nsrav.bagdelivery",
+            "certificate_hash": "983dcaf784fb9876ef6e4390ba96578c6b157428"
+          }
+        },
+        {
+          "client_id": "361658390254-dt9rfhoh63m8ugh35iamkkd9icmtfk7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj-XX66yjJ1WYK-NCUqiVOXg-vPEgHN-E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361658390254-dt9rfhoh63m8ugh35iamkkd9icmtfk7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
