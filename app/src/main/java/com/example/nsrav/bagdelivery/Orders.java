@@ -1,7 +1,6 @@
 package com.example.nsrav.bagdelivery;
 
 import com.google.firebase.database.Exclude;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.Map;
 
 public class Orders {
     String key,customerkey,shopposition,imageB;
-    public Orders(String key, String customerkey, String shopposition, StorageReference mStoragePathRef) {
+    public Orders() {
     }
 
     public Orders(String key, String customerkey, String shopposition, String imageB) {

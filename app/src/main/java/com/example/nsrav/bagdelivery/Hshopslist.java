@@ -22,22 +22,21 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Hshopslist extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ArrayList<String> list=new ArrayList<>();
-    ArrayList<String> shopdesc=new ArrayList<>();
-    String phone;
-    String address,name,Shopdesc;
 
     ListView listView;
-    DatabaseReference db;
+   /* DatabaseReference db;
+    Boolean saved=null;
+    ArrayList<String> users=new ArrayList<>();
 
+    public Hshopslist(DatabaseReference db) {
+        this.db = db;
+    }
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,68 +54,67 @@ public class Hshopslist extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         listView = (ListView) findViewById(R.id.listView);
-      final String il=getIntent().getExtras().getString("Shoptype");
-        final ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
+       /* ArrayAdapter adapter=new ArrayAdapter(this,android.R.layout.simple_list_item_1,users);
+        listView.setAdapter(adapter);
 
-        db = FirebaseDatabase.getInstance().getReference(il);
+    }
 
-
-
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Shopkeeper").child(il);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String,Map<String,String>> map= (Map<String, Map<String, String>>) dataSnapshot.getValue();
-                for(Map.Entry m:map.entrySet()){
-                    System.out.println(m.getKey()+" "+m.getValue());
-
-
-                    Map<String,String> map2= (Map<String, String>) m.getValue();
-
-                    // Log.d("phoneValue","***********************************"+phone);
-
-                      address=map2.get("address").toString();
-                      name = map2.get("name").toString();
-                    phone=String.valueOf(map2.get("phone"));
-                    //shopdesc.add(phone);
-                    //shopdesc.add(address);
-                    //shopdesc.add(name);
-                    //Log.d("shopdesc","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+shopdesc);
-                    Shopdesc=name+"\n"+address+"\n"+phone;
-                    adapter.add(name+"\n"+address+"\n"+phone);
-                  //  adapter.add(address);
-
-                    //adapter.add(phone);
-
-
-                    listView.setAdapter(adapter);
-
-                   /* Map<String,String> map2= (Map<String, String>) m.getValue();
-                    for(Map.Entry m1:map.entrySet()){
-                        System.out.println(m1.getKey()+" "+m1.getValue());
-
-                    }*/
+       public ArrayList<String> retrieve()
+        {
+            db.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    fetchData(dataSnapshot);
                 }
 
-            }
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Log.d("##","$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$44");
+                    fetchData(dataSnapshot);
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
 
-            }
-        });
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            return users;
+        }
 
 
-       // String[] items = {"letter for attendance", "Rigolade", "Internships", "WISE"};
-       /// ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
+    private void fetchData(DataSnapshot dataSnapshot)
+    {
+        //users.clear();
+
+        for (DataSnapshot ds : dataSnapshot.getChildren())
+        {
+            String name=ds.getValue(Shopkeeper.class).getName();
+            users.add(name);
+            Log.d("test","!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1"+name);
+        }
+    }
+*/
+        String[] items = {"letter for attendance", "Rigolade", "Internships", "WISE"};
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String s = parent.getItemAtPosition(position).toString();
                 Intent i = new Intent(Hshopslist.this, Shoplist2.class);
-                DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Shopkeeper").child(il);
-               i.putExtra("Shopdesc", Shopdesc);
+                i.putExtra("key", s);
                 startActivity(i);
 
             }

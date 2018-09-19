@@ -8,7 +8,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -119,22 +118,5 @@ public class DeliveryLogin extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-    public void enter(View v) {
-        if (!(ed1.getText().toString().isEmpty())&& !(ed2.getText().toString().isEmpty())) {
-
-
-            if ((ed1.getText().toString().equals(s.getString("Phone",""))) && (ed2.getText().toString().equals(s.getString("Password",""))) ){
-                //Toast.makeText(getApplicationContext(),"Enter credentials or create account",Toast.LENGTH_LONG).show();
-                System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                String key=getIntent().getExtras().getString("key");
-                Intent in = new Intent(DeliveryLogin.this, shoplist.class);
-                in.putExtra("key",key);
-                startActivity(in);
-                Log.d("key",key);
-            }
-        }
-        else
-            Toast.makeText(getApplicationContext(),"Enter credentials or create account",Toast.LENGTH_LONG).show();
     }
 }

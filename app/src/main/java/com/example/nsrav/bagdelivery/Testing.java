@@ -36,7 +36,48 @@ public class Testing extends AppCompatActivity {
         final ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,list);
         listView.setAdapter(adapter);
         db = FirebaseDatabase.getInstance().getReference("Users");
+        /*db.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //list.add(dataSnapshot.getValue(String.class));
+                Map<String,Map<String,String>> map= (Map<String, Map<String, String>>) dataSnapshot.getValue();
+                for(Map.Entry m:map.entrySet()){
+                    //System.out.println(m.getKey()+" "+m.getValue());
+                    Map<String,String> map2= (Map<String, String>) m.getValue();
+                    for(int i=0;i<4;i++)
+                    {
+                        if(i==2)
+                        {
+                            String val=map2.get("name");
+                            list.add(val);
+                        }
+                    }
 
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
 
 
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference().child("Shopkeeper").child("Grocerries");

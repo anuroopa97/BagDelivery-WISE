@@ -40,32 +40,10 @@ public class CustSelect extends AppCompatActivity
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(CustSelect.this,Hshopslist.class);
-                    intent.putExtra("Shoptype","Groceries");//Testing.class
+                    Intent intent = new Intent(CustSelect.this,Hshopslist.class);//Testing.class
                     startActivity(intent);
                 }
             });
-            Button b1 = (Button) findViewById(R.id.medicines);
-            b1.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(CustSelect.this,Hshopslist.class);
-                    intent.putExtra("Shoptype","Medical");//Testing.class
-                    startActivity(intent);
-                }
-            });
-            Button b2 = (Button) findViewById(R.id.stationary);
-            b2.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(CustSelect.this,Hshopslist.class);
-                    intent.putExtra("Shoptype","Stationary");//Testing.class
-                    startActivity(intent);
-                }
-            });
-
         }
 
         @Override

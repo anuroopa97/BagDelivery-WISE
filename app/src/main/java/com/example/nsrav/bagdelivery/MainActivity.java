@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Start NewActivity.class
                 Intent myIntent = new Intent(MainActivity.this,
-                        ShopkeeperLogin.class);// ShopkeeperLogin.class
+                        ShopListView.class);// ShopkeeperLogin.class
                 startActivity(myIntent);
             }
         });

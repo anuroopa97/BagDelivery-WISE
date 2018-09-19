@@ -144,17 +144,16 @@ public class Login extends AppCompatActivity
 
             if ((ed1.getText().toString().equals(s.getString("Phone",""))) && (ed2.getText().toString().equals(s.getString("Password",""))) ){
                 //Toast.makeText(getApplicationContext(),"Enter credentials or create account",Toast.LENGTH_LONG).show();
-               Log.d("start of login","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                System.out.print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
-//               String shopposition=getIntent().getExtras().getString("shopposition");
+               String shopposition=getIntent().getExtras().getString("shopposition");
                 String customerkey=getIntent().getExtras().getString("customerkey");
                 Intent in = new Intent(Login.this, ExCamera.class);
                 in.putExtra("customerkey",customerkey);
-               // in.putExtra("shopposition",shopposition);
+                in.putExtra("shopposition",shopposition);
 
-
-//                Log.d("key",customerkey);
                 startActivity(in);
+                Log.d("key",customerkey);
             }
         }
         else

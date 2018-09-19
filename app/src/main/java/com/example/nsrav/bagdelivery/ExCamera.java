@@ -23,19 +23,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ExCamera extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     Intent intent;
     static String key;
-    Uri downloadUrl;
 ImageView mimageView;
-    public String customerkey,orderKey;
+    public String customerkey;
     public String shopposition;
-    DatabaseReference mDatabase;
-    StorageReference mStoragePathRef;
    // public String key=  intent.getStringExtra("key");
 
     @Override
@@ -66,7 +61,7 @@ ImageView mimageView;
             mimageView.setImageBitmap(mphoto);
             String str=encodeTobase64(mphoto);
            // Toast.makeText(this, "code=== "+str, Toast.LENGTH_SHORT).show();
-           /* DatabaseReference ref = FirebaseDatabase.getInstance()
+            DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("orders");//push().child("ImageUrl")
             key=ref.getKey();
 
@@ -76,31 +71,25 @@ ImageView mimageView;
                     .getReference("orders").child(key)
                     .child("customerKey");
             ref.setValue(customerkey);
-          ref = FirebaseDatabase.getInstance()
+        /*    ref = FirebaseDatabase.getInstance()
                     .getReference("orders").child("order1")
                     .child("delivery");
             ref.setValue(key);
-
+            */
             ref = FirebaseDatabase.getInstance()
                     .getReference("orders").child(key)
                     .child("shopPosition");
 ref.setValue(shopposition);
-*/
         }
     }
-    public String encodeTobase64(Bitmap image) {
+    public static String encodeTobase64(Bitmap image) {
         Bitmap immagex = image;
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         immagex.compress(Bitmap.CompressFormat.PNG, 90, baos);
         byte[] b = baos.toByteArray();
-
-// Create a reference to 'images/mountains.jpg'
-        StorageReference mstorageRef = FirebaseStorage.getInstance().getReference();
-
-         mStoragePathRef = mstorageRef.child("images/mountains.jpg");
-       // StorageReference mStorageRef = FirebaseStorage.getInstance().getReference("orders").child(key);
-        UploadTask uploadTask = mStoragePathRef.putBytes(b);
+        StorageReference mStorageRef = FirebaseStorage.getInstance().getReference("orders").child(key);
+        UploadTask uploadTask = mStorageRef.putBytes(b);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -110,29 +99,12 @@ ref.setValue(shopposition);
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
-
-               downloadUrl = taskSnapshot.getDownloadUrl();
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
             }
         });
         String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
 
-
-      mDatabase = FirebaseDatabase.getInstance().getReference("orders");
-        //mUserReference=FirebaseDatabase.getInstance().getReference("Users");
-        orderKey=mDatabase.push().getKey();
-        Log.d("tag1","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+customerkey);
-        Log.d("tag2","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+shopposition);
-        Log.d("downloadUrl","@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+mStoragePathRef);//mStoragePathRef
-
-       Orders users=new Orders("true",customerkey,"shopposition",mStoragePathRef);
-        Map<String, Object> postValues = users.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put( orderKey, postValues);
-        // childUpdates.put("/user/" + userId + "/" + key, postValues);
-        mDatabase.updateChildren(childUpdates);
-
         return imageEncoded;
-
     }
 
 }

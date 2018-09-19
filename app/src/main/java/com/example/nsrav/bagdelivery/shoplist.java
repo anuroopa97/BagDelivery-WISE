@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -35,7 +34,6 @@ public class shoplist extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String s=parent.getItemAtPosition(position).toString();
-               Log.d("ShopKeeper Item Number","%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+s);
                 Intent i=new Intent(shoplist.this,listitemdesc.class);
                 i.putExtra("shopposition",s);
                 startActivity(i);

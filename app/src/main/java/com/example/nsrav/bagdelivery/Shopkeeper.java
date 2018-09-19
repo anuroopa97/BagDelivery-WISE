@@ -30,7 +30,7 @@ public class Shopkeeper {
         HashMap<String, Object> result = new HashMap<>();
         result.put("name", name);
         result.put("phone", phone);
-        result.put("address",address);
+        result.put("address", address);
 
         return result;
     }

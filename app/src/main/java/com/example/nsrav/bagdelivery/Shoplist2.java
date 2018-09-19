@@ -48,7 +48,7 @@ public class Shoplist2 extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         tv=(TextView)findViewById(R.id.shop);
         Intent i=getIntent();
-        tv.setText("Welcome to "+i.getStringExtra("Shopdesc"));
+        tv.setText("Welcome to"+i.getStringExtra("key"));
       /*  db= FirebaseDatabase.getInstance().getReference();
         helper=new Hshopslist(db);
 
@@ -71,8 +71,8 @@ public class Shoplist2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Shoplist2.this,Login.class);
-                //String s=getIntent().getExtras().getString("shopposition");
-                //intent.putExtra("shopposition",s);
+                String s=getIntent().getExtras().getString("shopposition");
+                intent.putExtra("shopposition",s);
                 startActivity(intent);
             }
         });

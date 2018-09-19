@@ -13,20 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class listitemdesc extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView tv;
-    ImageView listDisplay;
-    //StorageReference mStorageRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +26,8 @@ public class listitemdesc extends AppCompatActivity
 
         setContentView(R.layout.activity_listitemdesc);
         tv=(TextView)findViewById(R.id.textView);
-        listDisplay=(ImageView)findViewById(R.id.listdisplay);
         Intent i=getIntent();
-        tv.setText("List of "+i.getStringExtra("key"));
+        tv.setText("Welcome to"+i.getStringExtra("key"));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,16 +48,6 @@ public class listitemdesc extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-
-
-        StorageReference pathReference = storageRef.child("images/mountains.jpg");
-        Glide.with(this)
-                .using(new FirebaseImageLoader())
-                .load(pathReference)
-                .into(listDisplay);
-
     }
 
     @Override
